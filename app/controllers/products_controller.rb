@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @carts = current_user.carts
   end
 
   # GET /products/1

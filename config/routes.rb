@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :user do
     resources :products do
-      resources :carts, only: [:index, :create]
+      resources :carts, only: [:create]
     end
+  end
+
+  resources :users  do
+    resources :carts, only: [:index]
   end
 
 

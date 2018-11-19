@@ -13,13 +13,15 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <% if user_signed_in? %>
           Welcome <%= current_user.email %>
+          Carro
           <% else %>
           <%= 'Please sign in'%>
           <% end %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% if user_signed_in? %>
-            <%= link_to 'Profile', user_products_path(current_user), class: 'dropdown-item' %>
+            <%= link_to 'My cart', user_carts_path(current_user), class: 'dropdown-item' %> <span class="badge badge-secondary"><%= @carts.map{|order| order.product}.count %></span>
+            <%= link_to 'My products', user_products_path(current_user), class: 'dropdown-item' %>
             <div class="dropdown-divider"></div>
             <%= link_to 'Log out', destroy_user_session_path, method: :DELETE, class: 'dropdown-item' %>
           <% else %>
